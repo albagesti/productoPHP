@@ -10,31 +10,11 @@ use Illuminate\Support\Facades\Config;
 
 class LoginController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Login Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles authenticating users for the application and
-    | redirecting them to your home screen. The controller uses a trait
-    | to conveniently provide its functionality to your applications.
-    |
-    */
 
     use AuthenticatesUsers;
 
-    /**
-     * Where to redirect users after login.
-     *
-     * @var string
-     */
-    protected $redirectTo = '/';
+    protected $redirectTo = '/alumno';
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
@@ -42,9 +22,6 @@ class LoginController extends Controller
         $this->middleware('guest:writer')->except('logout');
     }
 
-    /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
     public function showAdminLoginForm()
     {
         return view('auth.login', [
@@ -52,9 +29,6 @@ class LoginController extends Controller
         ]);
     }
 
-    /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
     public function showWriterLoginForm()
     {
         return view('auth.login', [
@@ -62,10 +36,6 @@ class LoginController extends Controller
         ]);
     }
 
-    /**
-     * @param Request $request
-     * @return array
-     */
     protected function validator(Request $request)
     {
         return $this->validate($request, [
@@ -74,11 +44,6 @@ class LoginController extends Controller
         ]);
     }
 
-    /**
-     * @param Request $request
-     * @param $guard
-     * @return bool
-     */
     protected function guardLogin(Request $request, $guard)
     {
         $this->validator($request);
@@ -92,11 +57,6 @@ class LoginController extends Controller
         );
     }
 
-    /**
-     * @param Request $request
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function adminLogin(Request $request)
     {
         if ($this->guardLogin($request, Config::get('constants.guards.admin'))) {
@@ -106,13 +66,6 @@ class LoginController extends Controller
         return back()->withInput($request->only('email', 'remember'));
     }
 
-
-
-    /**
-     * @param Request $request
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function writerLogin(Request $request)
     {
         if ($this->guardLogin($request,Config::get('constants.guards.writer'))) {
