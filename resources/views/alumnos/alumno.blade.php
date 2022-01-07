@@ -13,7 +13,7 @@
     </a>
     <nav>
         <ul>
-            <li><a href="{{ url('schedule') }}"> Dias</a></li>
+            <li><a href="{{ url('/schedule') }}"> Dias</a></li>
             <li><a href="alumno.php?schedule=week&week=0"> Semanas</a></li>
             <li><a href="alumno.php?schedule=month&month=0"> Meses</a></li>
             <li><a  href="{{ url('perfil') }}"> Perfil</a></li>
