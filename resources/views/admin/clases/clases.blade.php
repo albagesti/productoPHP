@@ -4,14 +4,22 @@
     <article>
         <div><a  href="{{ url('admin/admin') }}">Atrás</a>
         <h1>Clases</h1>
-        <form method="POST" action="../clases">
+        <form method="POST" action="{{url('clases')}}">
             @csrf
             <label for="id_class">Añadir clase</label>
             <input type="text" name="name" placeholder="Nombre de la Clase" >
             <label for="id_teacher">Profesor/a</label>
-            <input type="text" name="id_teacher" placeholder="ID Profesor/a" >
-            <label for="day_start">Dia de la clase</label>
-            <input type="date" name="day_start">
+            <select name="id_teacher">
+                @foreach($teachers as $teacher)
+                    <option value="{{$teacher->id_teacher}}">{{$teacher->name}} {{$teacher->surname}}</option>
+                @endforeach
+            </select>
+            <label for="id_course">Curso</label>
+            <select name="id_course">
+                @foreach($courses as $course)
+                    <option value="{{$course->id_course}}">{{$course->name}}</option>
+                @endforeach
+            </select>
             <label >Color de la Clase</label>
             <input type="color" name="color" value="#ff0000">
             <input type="hidden" name="createClass">
@@ -24,16 +32,18 @@
                 <tr class="clases_title">
                     <td>Nombre</td>
                     <td>Profesor<br></td>
+                    <td>Curso</td>
                     <td>Fecha<br></td>
                     <td>Color<br></td>
                 </tr>
                 <div class="lista-cursos">
                     @foreach($clases as $clase)
                         <tr>
-                            <td>Nombre:{{$clase->name}}<br></td>
-                            <td>Profesor:{{$clase->id_teacher}}<br></td>
-                            <td>Fecha: {{$clase->day_start}}<br></td>
-                            <td>Color: {{$clase->color}}<br></td>
+                            <td>{{$clase->name}}<br></td>
+                            <td>{{$clase->teacher_name}} {{$clase->teacher_surname}}<br></td>
+                            <td>{{$clase->course_name}}</td>
+                            <td>{{$clase->day_start}}<br></td>
+                            <td style="width:40px; background-color:{{$clase->color}}"><br></td>
                             <td><a href="{{ url('/clases/edit', [$clase->id_class]) }}"><button>Editar</button></a></td>
                             <td><a href="{{ url('/clases/delete', [$clase->id_class]) }}"><button>Eliminar</button></a></td>
                         </tr>
