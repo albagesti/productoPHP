@@ -11,7 +11,7 @@ use App\Models\Classes;
 class AlumnoController extends Controller
 {
     public function index(){
-        $user = Auth::user();
+        $user = Auth::User();
         $student = students::get()->where('id', $user->id)->first();
         $cursos = students::join('enrollment', 'enrollment.id_student', '=', 'students.id')
         ->join('courses', 'courses.id_course', '=', 'enrollment.id_course')

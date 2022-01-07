@@ -17,7 +17,8 @@ Route::post('/login/writer', 'Auth\LoginController@writerLogin');
 Route::post('/register/admin', 'Auth\RegisterController@createAdmin')->name('register.admin');
 Route::post('/register/writer', 'Auth\RegisterController@createWriter')->name('register.writer');
 
-Route::view('/alumnos/alumno', '/alumnos/alumno')->middleware('auth');
+Route::get('/alumno', 'AlumnoController@index')->middleware('auth');
+
 Route::group(['middleware' => 'auth:admin'], function () {
     Route::view('/admin/admin', '/admin/admin');
 });

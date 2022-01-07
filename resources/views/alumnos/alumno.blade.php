@@ -32,31 +32,31 @@
 
     <article>
         <header>
-            <h1>Bienvenido Alumno</h1>
+            <h1>Bienvenido {{$student->name}}</h1>
         </header>
 
         <img src="https://www.uoc.edu/portal/_resources/common/imatges/sala_de_premsa/noticies/2016/202-nova-marca-uoc.jpg" alt="UOC" />
 
-{{--        <div class="content">--}}
-{{--            @if(count($cursos) < 1)--}}
-{{--                No estás inscrito en ningún curso... Espera a que tu profesor te inscriba.--}}
-{{--            @else--}}
-{{--                Estos son tus cursos inscritos:--}}
-{{--            @endif--}}
-{{--            <div class="lista-cursos-alumno">--}}
-{{--                @foreach($cursos as $curso)--}}
+        <div class="content">
+            @if(count($cursos) < 1)
+                No estás inscrito en ningún curso... Espera a que tu profesor te inscriba.
+            @else
+                Estos son tus cursos inscritos:
+            @endif
+            <div class="lista-cursos-alumno">
+                @foreach($cursos as $curso)
 
-{{--                    <div class="panel-curso-alumno @if($curso->active == 1) active-course @endif">--}}
-{{--                        <a class="panel-curso-enlace" href="{{url('alumnos/alumno/curso', ['id_course' => $curso->id_course])}}">--}}
-{{--                            <h4>{{$curso->name}}</h4>--}}
-{{--                            <p class="course-description">{{$curso->description}}</p>--}}
-{{--                            <p>Fecha Inicio: {{$curso->date_start}}</p>--}}
-{{--                            <p>Fecha Final: {{$curso->date_end}}</p>--}}
-{{--                        </a>--}}
-{{--                    </div>--}}
-{{--                @endforeach--}}
-{{--            </div>--}}
-{{--        </div>--}}
+                    <div class="panel-curso-alumno @if($curso->active == 1) active-course @endif">
+                        <a class="panel-curso-enlace" href="{{url('alumnos/alumno/curso', ['id_course' => $curso->id_course])}}">
+                            <h4>{{$curso->name}}</h4>
+                            <p class="course-description">{{$curso->description}}</p>
+                            <p>Fecha Inicio: {{$curso->date_start}}</p>
+                            <p>Fecha Final: {{$curso->date_end}}</p>
+                        </a>
+                    </div>
+                @endforeach
+            </div>
+        </div>
 
     </article> <!-- /article -->
 
