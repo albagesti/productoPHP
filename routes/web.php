@@ -17,8 +17,6 @@ Route::post('/login/writer', 'Auth\LoginController@writerLogin');
 Route::post('/register/admin', 'Auth\RegisterController@createAdmin')->name('register.admin');
 Route::post('/register/writer', 'Auth\RegisterController@createWriter')->name('register.writer');
 
-Route::get('/alumno', 'AlumnoController@index')->middleware('auth');
-
 Route::group(['middleware' => 'auth:admin'], function () {
     Route::view('/admin/admin', '/admin/admin');
 });
@@ -78,6 +76,7 @@ Route::get('perfil', function () {
     return view('perfil');
 });
 //
-//Route::get('alumnos/alumno', [AlumnoController::class, 'index']);
 
-Route::get('alumnos/alumno/cursos/{id_course}', [AlumnoController::class, 'show']);
+Route::get('/alumno', [AlumnoController::class, 'index']);
+
+Route::get('/alumno/curso/{id_course}', [AlumnoController::class, 'show']);

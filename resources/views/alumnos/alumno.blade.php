@@ -47,7 +47,7 @@
                 @foreach($cursos as $curso)
 
                     <div class="panel-curso-alumno @if($curso->active == 1) active-course @endif">
-                        <a class="panel-curso-enlace" href="{{url('alumnos/alumno/curso', ['id_course' => $curso->id_course])}}">
+                        <a class="panel-curso-enlace" href="{{url('/alumno/curso', ['id_course' => $curso->id_course])}}">
                             <h4>{{$curso->name}}</h4>
                             <p class="course-description">{{$curso->description}}</p>
                             <p>Fecha Inicio: {{$curso->date_start}}</p>
