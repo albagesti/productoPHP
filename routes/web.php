@@ -1,8 +1,12 @@
 <?php
 use App\Http\Controllers\AlumnoController;
 use App\Http\Controllers\CoursesController;
+use App\Http\Controllers\PerfilController;
 use App\Http\Controllers\TeachersController;
 use App\Http\Controllers\ClassController;
+use App\Http\Controllers\SchedulEventController;
+Use App\Mail\ContactanosMailable;
+Use Illuminate\Support\Facades\Mail;
 
 Route::view('/', 'welcome');
 Auth::routes();
@@ -74,13 +78,39 @@ Route::get('clases/horario/{id_class}', [ClassController::class, 'horario'])->na
 
 Route::put('clases/horario/{id_class}', [ClassController::class, 'sethorario'])->name('auth.admin');
 
+<<<<<<< HEAD
 Route::get('clases/alumnos/{id_class}', [ClassController::class, 'alumnos'])->name('auth.admin');
 
 Route::get('perfil', function () {
     return view('perfil');
 });
 //
+=======
+
+//ALUMNO
+>>>>>>> 1602fb9444a697fee6411e76c7aaa27abe19edbb
 
 Route::get('/alumno', [AlumnoController::class, 'index']);
 
 Route::get('/alumno/curso/{id_course}', [AlumnoController::class, 'show']);
+
+//Route::get('schedulevent/add',[SchedulEventController::class,'CreateSchedulEvent']);
+//Route::post('schedulevent/add',[SchedulEventController::class,'store']);
+//Route::get('schedulevent',[SchedulEventController::class,'calender']);
+
+//PERFIL
+
+Route::get('perfil', [PerfilController::class, 'perfil'])->name('perfil') ;
+Route::post('perfil/actualizar', [PerfilController::class, 'actualizar'])->name('perfil/actualizar') ;
+
+
+///metodo enviar notificacion
+
+Route::get('contactanos', function(){
+
+    $correo = new ContactanosMailable;
+
+    Mail::to('csalama@uoc.edu')->send($correo);
+    return "Mensaje enviado";
+
+});

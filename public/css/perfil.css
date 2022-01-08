@@ -24,8 +24,6 @@ body {
     font-size: 1em;
     line-height: 1.5em;
 }
-
-
 .seccion-perfil-usuario .perfil-usuario-body,
 .seccion-perfil-usuario {
     display: flex;
@@ -163,6 +161,35 @@ nav ul li a {
 nav ul li a:hover {
     background: #0b76a6;
 }
+
+form input[type="submit"],button{
+    width:100%;
+    padding:8px 16px;
+    margin-top:32px;
+    border:1px solid #000;
+    border-radius:5px;
+    display:block;
+    color:#fff;
+    background-color:#000;
+}
+
+form input[type="submit"]:hover,button{
+    cursor:pointer;
+    background: #0b76a6;
+}
+input,label {
+    line-height: 25px;
+    display: block;
+    padding: 0 10px;
+    text-decoration: none;
+    list-style: none;
+    padding-right: 20px;
+    margin:auto;
+}
+form{
+    margin:auto;
+}
+
 
 
 /* adactacion a dispositivos */
