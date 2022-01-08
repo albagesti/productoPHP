@@ -86,8 +86,9 @@ Route::get('/alumno', [AlumnoController::class, 'index']);
 
 Route::get('/alumno/curso/{id_course}', [AlumnoController::class, 'show']);
 
-//Route::get('schedulevent/add',[SchedulEventController::class,'CreateSchedulEvent']);
 //Route::post('schedulevent/add',[SchedulEventController::class,'store']);
+
+
 //Route::get('schedulevent',[SchedulEventController::class,'calender']);
 
 //PERFIL

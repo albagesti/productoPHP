@@ -24,6 +24,9 @@ body {
     font-size: 1em;
     line-height: 1.5em;
 }
+
+
+
 .seccion-perfil-usuario .perfil-usuario-body,
 .seccion-perfil-usuario {
     display: flex;
@@ -186,8 +189,13 @@ input,label {
     padding-right: 20px;
     margin:auto;
 }
-form{
-    margin:auto;
+
+.perfil-usuario-footer{
+    justify-content: center;
+    align-items: center;
+}
+ a {
+    color: white;
 }
 
 

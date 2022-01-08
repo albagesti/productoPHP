@@ -19,15 +19,13 @@
                     <li><a href="alumno.php?schedule=week&week=0"> SEMANAS</a></li>
                     <li><a href="alumno.php?schedule=month&month=0"> MESES</a></li>
                     <li><a href="{{ url('perfil') }}"> Perfil</a></li>
-
-                    <li><a href="{{ route('logout') }}"
-                           onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                            Log out
-                        </a>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                            {{ csrf_field() }}
-                        </form>
-                    </li>
+                    <a class="dropdown-item" href="{{ route('logout') }}"
+                       onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        {{ __('Logout') }}
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
                 </ul>
             </nav>
         </div>
