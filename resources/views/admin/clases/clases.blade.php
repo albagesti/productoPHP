@@ -44,6 +44,7 @@
                             <td>{{$clase->course_name}}</td>
                             <td style="width:40px; background-color:{{$clase->color}}"><br></td>
                             <td><a href="{{ url('/clases/horario', [$clase->id_class]) }}">Horario</a></td>
+                            <td><a href="{{ url('/clases/alumnos', [$clase->id_class]) }}">Alumnos</a></td>
                             <td><a href="{{ url('/clases/edit', [$clase->id_class]) }}"><button>Editar</button></a></td>
                             <td><a href="{{ url('/clases/delete', [$clase->id_class]) }}"><button>Eliminar</button></a></td>
                         </tr>

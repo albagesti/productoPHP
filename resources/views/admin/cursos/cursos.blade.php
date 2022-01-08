@@ -13,6 +13,7 @@
                     <p class="course-description">{{$curso->description}}</p>
                     <p>Fecha Inicio: {{$curso->date_start}}</p>
                     <p>Fecha Final: {{$curso->date_end}}</p>
+                    <a href="{{ url('cursos/alumnos', [$curso->id_course]) }}"><button>Alumnos</button></a>
                     <a href="{{ url('cursos/edit', [$curso->id_course]) }}"><button>Editar</button></a>
                     <a href="{{ url('cursos/delete', [$curso->id_course])}}"><button>Eliminar</button></a>
                 </div>

@@ -50,6 +50,12 @@ Route::put('cursos/edit/{id_course}', [CoursesController::class, 'update'])->nam
 
 Route::get('/cursos/delete/{id_course}', [CoursesController::class, 'delete'])->name('auth.admin');
 
+Route::get('/cursos/alumnos/{id_course}', [CoursesController::class, 'studentsEnroll'])->name('auth.admin');
+
+Route::post('/cursos/alumnos/remove', [CoursesController::class, 'studentRemove'])->name('auth.admin');
+
+Route::post('/cursos/alumnos/add', [CoursesController::class, 'studentAdd'])->name('auth.admin');
+
 // CLASES
 
 Route::get('clases',[ClassController::class, 'index'])->name('auth.admin');
@@ -67,6 +73,8 @@ Route::get('clases/delete/{id_class}', [ClassController::class, 'delete'])->name
 Route::get('clases/horario/{id_class}', [ClassController::class, 'horario'])->name('auth.admin');
 
 Route::put('clases/horario/{id_class}', [ClassController::class, 'sethorario'])->name('auth.admin');
+
+Route::get('clases/alumnos/{id_class}', [ClassController::class, 'alumnos'])->name('auth.admin');
 
 Route::get('perfil', function () {
     return view('perfil');

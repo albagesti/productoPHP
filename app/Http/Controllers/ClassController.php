@@ -6,6 +6,7 @@ use App\Models\Classes;
 use App\Models\teachers;
 use App\Models\courses;
 use App\Models\Schedule;
+use App\Models\students;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Carbon\Carbon;
@@ -82,7 +83,19 @@ class ClassController extends Controller
         $schedule->time_end = $request->time_end;
         $schedule->id_class = $id_class;
         $schedule->save();
+        $class = Classes::find($id_class);
+        $class->id_schedule = $schedule->id_schedule;
+        $class->save();
         return redirect('clases');
+    }
+
+    public function alumnos($id_class){
+        $alumnos = students::join('enrollment', 'enrollment.id_student', '=', 'students.id')
+        ->join('courses', 'courses.id_course', '=', 'enrollment.id_course')
+        ->join('class', 'class.id_course', '=', 'courses.id_course')
+        ->where('class.id_class', '=', $id_class)
+        ->select('students.id as studentId', 'students.username as studentUsername')->get();
+        return view('admin.clases.alumnos', ['students' => $alumnos]);
     }
 
 }
