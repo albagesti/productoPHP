@@ -24,8 +24,6 @@ body {
     font-size: 1em;
     line-height: 1.5em;
 }
-
-
 .seccion-perfil-usuario .perfil-usuario-body,
 .seccion-perfil-usuario {
     display: flex;
@@ -184,10 +182,14 @@ input,label {
     display: block;
     padding: 0 10px;
     text-decoration: none;
-    margin: 0;
     list-style: none;
     padding-right: 20px;
+    margin:auto;
 }
+form{
+    margin:auto;
+}
+
 
 
 /* adactacion a dispositivos */
