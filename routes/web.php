@@ -78,17 +78,9 @@ Route::get('clases/horario/{id_class}', [ClassController::class, 'horario'])->na
 
 Route::put('clases/horario/{id_class}', [ClassController::class, 'sethorario'])->name('auth.admin');
 
-<<<<<<< HEAD
 Route::get('clases/alumnos/{id_class}', [ClassController::class, 'alumnos'])->name('auth.admin');
 
-Route::get('perfil', function () {
-    return view('perfil');
-});
-//
-=======
-
 //ALUMNO
->>>>>>> 1602fb9444a697fee6411e76c7aaa27abe19edbb
 
 Route::get('/alumno', [AlumnoController::class, 'index']);
 
