@@ -10,6 +10,7 @@
             <input type="text" name="name" placeholder="Nombre de la Clase" >
             <label for="id_teacher">Profesor/a</label>
             <select name="id_teacher">
+                <option value="null" selected disabled>Escoge un profesor</option>
                 @foreach($teachers as $teacher)
                     <option value="{{$teacher->id_teacher}}">{{$teacher->name}} {{$teacher->surname}}</option>
                 @endforeach
@@ -33,7 +34,6 @@
                     <td>Nombre</td>
                     <td>Profesor<br></td>
                     <td>Curso</td>
-                    <td>Fecha<br></td>
                     <td>Color<br></td>
                 </tr>
                 <div class="lista-cursos">
@@ -42,8 +42,8 @@
                             <td>{{$clase->name}}<br></td>
                             <td>{{$clase->teacher_name}} {{$clase->teacher_surname}}<br></td>
                             <td>{{$clase->course_name}}</td>
-                            <td>{{$clase->day_start}}<br></td>
                             <td style="width:40px; background-color:{{$clase->color}}"><br></td>
+                            <td><a href="{{ url('/clases/horario', [$clase->id_class]) }}">Horario</a></td>
                             <td><a href="{{ url('/clases/edit', [$clase->id_class]) }}"><button>Editar</button></a></td>
                             <td><a href="{{ url('/clases/delete', [$clase->id_class]) }}"><button>Eliminar</button></a></td>
                         </tr>

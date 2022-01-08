@@ -64,6 +64,9 @@ Route::put('clases/edit/{id_class}', [ClassController::class, 'update'])->name('
 
 Route::get('clases/delete/{id_class}', [ClassController::class, 'delete'])->name('auth.admin');
 
+Route::get('clases/horario/{id_class}', [ClassController::class, 'horario'])->name('auth.admin');
+
+Route::put('clases/horario/{id_class}', [ClassController::class, 'sethorario'])->name('auth.admin');
 
 Route::get('perfil', function () {
     return view('perfil');

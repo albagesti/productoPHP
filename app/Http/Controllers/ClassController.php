@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Classes;
 use App\Models\teachers;
 use App\Models\courses;
+use App\Models\Schedule;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Carbon\Carbon;
 
 class ClassController extends Controller
 {
@@ -62,5 +64,25 @@ class ClassController extends Controller
         return redirect('clases');
     }
 
+    public function horario($id_class){
+        $clase = Classes::find($id_class);
+        $schedule = Schedule::get()->where('id_class', $id_class)->first();
+        return view('admin.clases.horarios', [
+            'clase' => $clase, 'schedule' => $schedule
+        ]);
+    }
+
+    public function sethorario(Request $request, $id_class){
+        if(isset($request->id_schedule))
+            $schedule = Schedule::find($request->id_schedule);
+        else
+            $schedule = new Schedule;
+        $schedule->day = $request->day;
+        $schedule->time_start = $request->time_start;
+        $schedule->time_end = $request->time_end;
+        $schedule->id_class = $id_class;
+        $schedule->save();
+        return redirect('clases');
+    }
 
 }

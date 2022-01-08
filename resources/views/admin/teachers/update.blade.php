@@ -13,7 +13,7 @@
         <label for="nif">NIF</label>
         <input type="text" name="nif" value="{{$teacher->nif}}">
         <label for="email">Email</label>
-        <input type="text" name="email" value="{{$teacher->nif}}">
+        <input type="text" name="email" value="{{$teacher->email}}">
         <input type="submit" value="Actualizar">
     </form>
 </div>
